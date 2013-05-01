@@ -28,5 +28,5 @@ $( '.element' ).fillWindow( { align: 'bottom' } );
 You can see the plugin in action at http://gordoncressy.com.
 
 ## TODO
-- [ ] Add option "resize" that makes element resize to fill the window on browser resize.
+- [ ] Add option "resize". This would allow the user to bind FillWindow to the window resize event automatically, without having to write a handler themselves.
 - [ ] Make it work on mobile devices.
