@@ -23,7 +23,10 @@ Example usage:
 ```javascript
 $( '.element' ).fillWindow( { align: 'bottom' } );
 ```
+## Examples
 
-##TODO
+You can see the plugin in action at http://gordoncressy.com.
+
+## TODO
 - [ ] Add option "resize" that makes element resize to fill the window on browser resize.
 - [ ] Make it work on mobile devices.
