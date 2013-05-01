@@ -1,0 +1,13 @@
+{
+  "name": "jquery.fillwindow",
+  "version": "1.0.0",
+  "main": "./jquery.fillwindow.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.7.0"
+  }
+}
