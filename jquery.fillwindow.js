@@ -76,6 +76,7 @@
         assignPadding( $this );
       }
     } );
-
+    
+    return this;
   }
 } )( jQuery );
