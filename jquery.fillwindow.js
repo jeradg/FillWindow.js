@@ -30,16 +30,21 @@
         newPadding,
         paddingTop,
         paddingBottom,
+        totalPadding,
+        borderTopWidth,
+        borderBottomWidth,
+        borderWidth,
         thisTotalHeight,
         // Mobile Safari does not properly measure $( window ).height().
         // Checking for window.innerHeight provides a workaround.
         windowHeight = parseInt( ( window.innerHeight ? window.innerHeight : $( window ).height() ), 10 );
     
     function paddingAmount() {
+      totalPadding = windowHeight - height - borderWidth;
       if ( ( settings.align === 'top' ) || ( settings.align === 'bottom' ) ) {
-        return Math.ceil( windowHeight - height ) + 'px';
+        return Math.ceil( totalPadding ) + 'px';
       } else {
-        return Math.ceil( ( windowHeight - height ) / 2 ) + 'px';
+        return Math.ceil( ( totalPadding ) / 2 ) + 'px';
       }
     }
 
@@ -66,9 +71,13 @@
       height = parseInt( $this.height(), 10 );
       paddingTop = parseInt( $this.css( 'padding-top' ), 10 );
       paddingBottom = parseInt( $this.css( 'padding-bottom' ), 10 );
+      borderTopWidth = parseInt( $this.css( 'border-top-width' ), 10 );
+      borderBottomWidth = parseInt( $this.css( 'border-bottom-width' ), 10 );
+      borderWidth = borderTopWidth + borderBottomWidth;
       thisTotalHeight = height
                       + paddingTop
-                      + paddingBottom;
+                      + paddingBottom
+                      + borderWidth;
       // If the element is shorter than the window, fit the element to the window;
       // OR if the element is taller than the window and has padding-top or padding-bottom,
       // remove the padding-top and -bottom from the element
