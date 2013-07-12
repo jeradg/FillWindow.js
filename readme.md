@@ -8,10 +8,10 @@ Include jQuery and FillWindow.js in your webpage. Target an element or elements 
 
 ## Making it fully responsive
 
-To make FillWindow fully responsive to window resize events, add something like the following to your $( 'document' ).ready() function:
+To make FillWindow fully responsive to window resize events, add something like the following to your $( document ).ready() function:
 
 ```javascript
-$( 'document' ).ready( function() {
+$( document ).ready( function() {
   function resizer() {
     $( '.element' ).fillWindow();
   }
@@ -35,18 +35,33 @@ startResize() binds the window resize event handler. window.setTimeout( resizer,
 
 ## Options
 
-By default, ``fillWindow()`` adds equal padding to the top and bottom of the target element to fit it to the window. ``fillWindow()`` takes an optional ``options`` argument. For now the only option is ``align``, which can have a value of ``'top'`` or ``'bottom'``. If ``align`` is set to ``'top'``, all of the padding is added to the bottom of the element, which pushes content to the top of the element. ``'bottom'`` does the opposite, pushing the content to the bottom of the element.
+By default, ``fillWindow()`` adds equal padding to the top and bottom of the target element to fit it to the window. ``fillWindow()`` takes an optional ``options`` object, which can include the following items:
+
+``alignment``: the vertical alignment of the element's contents. ``alignment`` has possible values of ``null``  (which assigns equal padding to the top and bottom), ``top`` (which pushes content to the top of the element by assigning all padding to the bottom), and ``bottom`` (which pushes content to the bottom of the element using padding on the top). Default: ``null``.
+      
+``offset``: the number of pixels larger or smaller than windowHeight to make the element. A negative number will make the element smaller than windowHeight by that number of pixels. A positive number will make the element larger than windowHeight by that number of pixels. (``offset`` must be a number with no unit, or a function that returns a number with no unit). Default: ``0``.
+      
+``borderBox``: If borderBox is ``true``, fillWindow will calculate padding based on the CSS border-box box model. Default: ``false``.
 
 Example usage:
 
 ```javascript
-$( '.element' ).fillWindow( { align: 'bottom' } );
+$( '.element' ).fillWindow( { 
+  alignment: 'bottom',
+  offset: 20,
+  borderBox: true
+} );
+
+$( '.element2' ).fillWindow( { 
+  offset: function() {
+    return -( $( '#some-other-element' ).outerHeight() );
+  }
+} );
 ```
+
 ## Examples
 
 You can see the plugin in action at http://gordoncressy.com.
 
 ## TODO
 - [ ] Add option "resize". This would allow the user to bind FillWindow to the window resize event automatically, without having to write a handler themselves.
-- [ x ] Make it work on mobile devices.
-  - Fixed on Mobile Safari.
