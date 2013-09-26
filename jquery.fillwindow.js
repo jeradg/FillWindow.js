@@ -1,10 +1,10 @@
 /*!
-* FillWindow.js 1.1
+* FillWindow.js 1.2
 *
 * Copyright 2013, Jerad Gallinger - http://jeradgallinger.ca
 * Released under the WTFPL license - http://sam.zoy.org/wtfpl/
 *
-* Date: Tue Jul 12 8:30:00 2013 -0500
+* Date: Thu Sep 26 8:42:00 2013 -0500
 *
 * A jQuery plugin that fits an element (or elements) to the size of the document window.
 *
@@ -45,11 +45,8 @@
       //   A negative number will make the element smaller than windowHeight by that number of pixels.
       //   A positive number will make the element larger than windowHeight by that number of pixels.
       //   (offset must be a number with no unit, or a function that returns a number with no unit)
-      
-      // - `borderBox`: If borderBox is `true`, fillWindow will calculate padding based on the CSS border-box box model.
       alignment: null,
-      offset: 0,
-      borderBox: false
+      offset: 0
     };
 
     if ( options ) {
@@ -71,11 +68,7 @@
       outerHeight = $this.outerHeight();
 
       function paddingAmount() {
-        if ( settings.borderBox === true ) {
-          totalPadding = windowHeight - borderWidth + adjustment;
-        } else {
-          totalPadding = windowHeight - height - borderWidth + adjustment;
-        }
+        totalPadding = windowHeight - height - borderWidth + adjustment;
         if ( ( settings.alignment === 'top' ) || ( settings.alignment === 'bottom' ) ) {
           return Math.ceil( totalPadding );
         } else {

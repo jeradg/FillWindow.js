@@ -41,15 +41,12 @@ By default, ``fillWindow()`` adds equal padding to the top and bottom of the tar
       
 ``offset``: the number of pixels larger or smaller than windowHeight to make the element. A negative number will make the element smaller than windowHeight by that number of pixels. A positive number will make the element larger than windowHeight by that number of pixels. (``offset`` must be a number with no unit, or a function that returns a number with no unit). Default: ``0``.
       
-``borderBox``: If borderBox is ``true``, fillWindow will calculate padding based on the CSS border-box box model. Default: ``false``.
-
 Example usage:
 
 ```javascript
 $( '.element' ).fillWindow( { 
   alignment: 'bottom',
-  offset: 20,
-  borderBox: true
+  offset: 20
 } );
 
 $( '.element2' ).fillWindow( { 
@@ -62,6 +59,12 @@ $( '.element2' ).fillWindow( {
 ## Examples
 
 You can see the plugin in action at http://gordoncressy.com.
+
+## Changelog
+
+### 1.2
+
+- Removed borderBox option. (Turns out it was unnecessary in the first place.)
 
 ## TODO
 - [ ] Add option "resize". This would allow the user to bind FillWindow to the window resize event automatically, without having to write a handler themselves.
